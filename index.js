@@ -22,7 +22,9 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')))
 
-
+app.get('/',(req,res)=>{
+    res.redirect('/home');
+})
 app.get('/home',async (req,res)=>{
     const data=await Data.find({});
     res.render('home',{data});
